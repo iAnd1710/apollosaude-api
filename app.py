@@ -1,16 +1,22 @@
-from flask import Flask
-from flask.globals import request
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import numpy as np
 import pickle
+import pandas as pd
+
+from prediction import predictDisease
 
 app = Flask(__name__)
+
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-model = pickle.load(open('model.pickle', 'rb'))
+#model = pd.read_pickle(r'disease.pkl')
 
+#with open('disease.pickle', 'rb') as f:
+#    model = pickle.load(f)         
 
+        
 @app.route("/")
 @cross_origin()
 def helloWorld():
@@ -22,14 +28,12 @@ def predDisease():
     
     if request.method == 'GET':
         
-        symptoms = np.array(request.args.get('symptoms'))
+        symptoms = str(request.args.get('symptoms')) #np.array
         
-        prediction = model.predict(symptoms) 
+        prediction = predictDisease(symptoms) 
         
     return (str(prediction))
         
 
-
 if __name__ == '__main__':
     app.run(debug=True)
-     
