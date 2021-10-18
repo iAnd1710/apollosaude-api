@@ -3,7 +3,6 @@ from flask_cors import CORS, cross_origin
 import numpy as np
 import pickle
 import pandas as pd
-
 from prediction import predictDisease
 
 app = Flask(__name__)

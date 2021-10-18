@@ -8,7 +8,7 @@ final_rf_model = pickle.load(open('rf_model.pkl', 'rb'))
 final_nb_model = pickle.load(open('nb_model.pkl', 'rb'))
 final_svm_model = pickle.load(open('svm_model.pkl', 'rb'))
 
-data = pd.read_csv("./datasets/training.csv").dropna(axis=1)
+data = pd.read_csv("./datasets/training.csv", encoding = "ISO-8859-1").dropna(axis=1)
 
 encoder = LabelEncoder()
 data["prognosis"] = encoder.fit_transform(data["prognosis"])
