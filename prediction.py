@@ -50,9 +50,9 @@ def predict_disease(symptoms):
     final_prediction = mode([rf_prediction, nb_prediction, svm_prediction])[0][0]
 
     dataDesc = pd.read_csv("./datasets/symptom_description.csv", encoding="ISO-8859-1")
-    #description = dataDesc.loc[dataDesc['Disease'] == final_prediction, 'Description'].iloc[0]
+    description = dataDesc.loc[dataDesc['Disease'] == final_prediction, 'Description'].iloc[0]
     predictions = {
         "disease": final_prediction,
-        #"description": description
+        "description": description
     }
     return predictions
