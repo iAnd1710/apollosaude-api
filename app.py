@@ -8,6 +8,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+# O PAI TA ON BIR
 
 @app.route('/', methods=['GET'])
 @cross_origin()
